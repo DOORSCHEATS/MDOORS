@@ -3,11 +3,12 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local SoundService = game:GetService("SoundService")
 
 local AllowedGames = {
-    [1] = 10549820578
+    [1] = 10549820578,
 }
 
 local NotAllowedGames = {
-    [1] = ""
+    [1] = 12308344607,
+    [2] = 6839171747
 }
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
@@ -16,10 +17,12 @@ function CheckForGameId(Id)
     local CheckIfAllowed = AllowedGames[table.find(AllowedGames, Id)]
     local CheckIfNotAllowed = NotAllowedGames[table.find(NotAllowedGames, Id)]
    
-    if CheckIfAllowed then
-        return AllowedGames[table.find(AllowedGames, Id)], true
+    if CheckIfNotAllowed then
+       if CheckIfAllowed then
+           return false
+       end
     else
-        return 0, false
+        return true
     end
 end
 
