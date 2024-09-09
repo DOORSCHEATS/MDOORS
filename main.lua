@@ -45,4 +45,6 @@ else
             5
         )
     end 
- end
+end
+
+OrionLib:Init()
