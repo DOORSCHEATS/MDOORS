@@ -17,6 +17,7 @@ local function Notify(NotifName, NotifContent, NotifImage, NotifTime)
         Image = NotifImage or "rbxassetid://4483345998",
         Time = NotifTime or 5
     })
+    print("notification sent")
 end
 
 if AllowedGames[table.find(AllowedGames, game.PlaceId)] then
