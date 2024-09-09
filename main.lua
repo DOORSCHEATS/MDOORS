@@ -1,5 +1,5 @@
 local AllowedGames = {
-    [1] = 10549820578
+    [1] = 6839171747
 }
  
 local NotAllowedGames = {
