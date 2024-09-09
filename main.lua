@@ -28,7 +28,18 @@ if AllowedGames[table.find(AllowedGames, game.PlaceId)] then
         4
     )
 
-    local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+    local Window = OrionLib:MakeWindow({
+        Name = "Doors (GAME)", 
+        HidePremium = false, 
+        SaveConfig = true, 
+        ConfigFolder = "OrionTest"
+    })
+
+    local Tab = Window:MakeTab({
+        Name = "Player",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
 else
     if NotAllowedGames[table.find(NotAllowedGames, game.PlaceId)] then
         Notify(
