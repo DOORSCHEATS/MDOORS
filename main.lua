@@ -3,27 +3,40 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local SoundService = game:GetService("SoundService")
 
 local AllowedGames = {
-    [1] = 6516141723  
+    [1] = 10549820578
 }
 
-local function Initialize()
+local NotAllowedGames = {
+    [1] = ""
+}
 
 function CheckForGameId(Id)
-    if AllowedGames[table.find(AllowedGames, Id)] then
+    local CheckIfAllowed = AllowedGames[table.find(AllowedGames, Id)]
+    local CheckIfNotAllowed = NotAllowedGames[table.find(NotAllowedGames, Id)]
+   
+    if CheckIfAllowed then
         return AllowedGames[table.find(AllowedGames, Id)], true
     else
         return 0, false
     end
 end
 
-task.defer(function()
-    local Id, CanStart = CheckForGameId(game.PlaceId)
+local function Initialize(Id)
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-    if CanStart and typeof(Id) == "number" and Id ~= 0 then
-        print(Id)
-    else
-        print("PLACE "..Id.." is not supported yet.")
-        return
+    if not CheckForGameId(Id) then
+        OrionLib:MakeNotification({
+            Name = "WARNING!",
+            Content = "Please run the script in the GAME, not in the lobby.",
+            Image = "rbxassetid://4483345998",
+            Time = 6
+        })
     end
+end
+
+
+
+task.defer(function()
+    Initialize(game.PlaceId)
 end)
 
