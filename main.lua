@@ -10,6 +10,8 @@ local NotAllowedGames = {
     [1] = ""
 }
 
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
 function CheckForGameId(Id)
     local CheckIfAllowed = AllowedGames[table.find(AllowedGames, Id)]
     local CheckIfNotAllowed = NotAllowedGames[table.find(NotAllowedGames, Id)]
@@ -21,22 +23,30 @@ function CheckForGameId(Id)
     end
 end
 
+local function Notify(NameNotif, ContentNotif, ImageNotif, TimeNotif)
+    OrionLib:MakeNotification({
+        Name = NameNotif or "no name given",
+        Content = ContentNotif or "no content given",
+        Image = ImageNotif or "rbxassetid://4483345998" ,
+        Time = 6 or 10
+    })
+end
+
 local function Initialize(Id)
-    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
     if not CheckForGameId(Id) then
-        OrionLib:MakeNotification({
-            Name = "WARNING!",
-            Content = "Please run the script in the GAME, not in the lobby.",
-            Image = "rbxassetid://4483345998",
-            Time = 6
-        })
+        Notify("WARNING!", "Please run the script in game, not in the lobby.", nil, 8)
+        return
+    else
+        Notify(
+            "Message", 
+            "Thanks for using MDOORS, join our discord () for updates and more!", 
+            "rbxassetid://4483345998", 
+            6
+        )
     end
 end
 
 
 
-task.defer(function()
-    Initialize(game.PlaceId)
-end)
-
+Initialize(game.PlaceId)
