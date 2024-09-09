@@ -6,6 +6,8 @@ local AllowedGames = {
     [1] = 6516141723  
 }
 
+local function Initialize()
+
 function CheckForGameId(Id)
     if AllowedGames[table.find(AllowedGames, Id)] then
         return AllowedGames[table.find(AllowedGames, Id)], true
@@ -20,6 +22,8 @@ task.defer(function()
     if CanStart and typeof(Id) == "number" and Id ~= 0 then
         print(Id)
     else
-        print("PLACE "..Id.." is not supported yet.") 
+        print("PLACE "..Id.." is not supported yet.")
+        return
     end
 end)
+
