@@ -43,7 +43,7 @@ else
             "Error",
             "Failed to check id, retry again. If it still fail, contact us on our discord ().",
             nil,
-            5
+            6
         )
     end 
 end
