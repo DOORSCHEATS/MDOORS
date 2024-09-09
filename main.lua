@@ -17,7 +17,7 @@ end
 task.defer(function()
     local Id, CanStart = CheckForGameId(game.PlaceId)
 
-    if CanStart then
+    if CanStart and typeof(Id) == "number" and Id ~= 0 then
         print(Id)
     else
         print("PLACE "..Id.." is not supported yet.") 
