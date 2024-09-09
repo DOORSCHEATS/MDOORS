@@ -21,16 +21,16 @@ local function Notify(NotifName, NotifContent, NotifImage, NotifTime)
 end
 
 if AllowedGames[table.find(AllowedGames, game.PlaceId)] then
-    print("Allowed")
     Notify(
         "WELCOME!",
         "Thanks for using MDOORS, join our discord () for more updates and infos.",
         nil,
         4
     )
+
+    local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 else
     if NotAllowedGames[table.find(NotAllowedGames, game.PlaceId)] then
-        print("Not allowed")
         Notify(
             "Error",
             "This Place/Floor isn't supported. Try to run the script in an another floor.",
@@ -47,5 +47,6 @@ else
         )
     end 
 end
+
 
 OrionLib:Init()
