@@ -2,7 +2,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local SoundService = game:GetService("SoundService")
 
-local _Utils = {
+local Utils = {
     --GetPlaceId = require(ReplicatedFirst:FindFirstChild("GetPlaceId"))
 }
 
