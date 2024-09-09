@@ -28,7 +28,7 @@ if AllowedGames[table.find(AllowedGames, game.PlaceId)] then
         4
     )
 else
-    if NotAllowedGames[game.PlaceId] then
+    if NotAllowedGames[table.find(NotAllowedGames, game.PlaceId)] then
         print("Not allowed")
         Notify(
             "Error",
